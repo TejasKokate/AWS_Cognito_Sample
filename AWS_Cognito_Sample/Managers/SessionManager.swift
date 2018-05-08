@@ -10,12 +10,18 @@ import AWSCognitoIdentityProvider
 
 final class SessionManager : NSObject {
     
+    //-------------------------------------------------------------------------
+    // MARK: - Variables
+    //-------------------------------------------------------------------------
     var window: UIWindow
     var signInViewController: SignInViewController?
     var navigationController: UINavigationController?
     var storyboard: UIStoryboard?
     var rememberDeviceCompletionSource: AWSTaskCompletionSource<NSNumber>?
     
+    //-------------------------------------------------------------------------
+    // MARK: - Initializer
+    //-------------------------------------------------------------------------
     override init() {
         self.window = UIApplication.shared.windows[0]
         super.init()
@@ -41,8 +47,9 @@ final class SessionManager : NSObject {
     
 }
 
+//------------------------------------------------------------------------------
 // MARK:- AWSCognitoIdentityInteractiveAuthenticationDelegate protocol delegate
-
+//------------------------------------------------------------------------------
 extension SessionManager: AWSCognitoIdentityInteractiveAuthenticationDelegate {
     
     func startPasswordAuthentication() -> AWSCognitoIdentityPasswordAuthentication {

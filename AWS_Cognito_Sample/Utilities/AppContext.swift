@@ -10,10 +10,15 @@ import Foundation
 
 public class AppContext {
     
+    //-------------------------------------------------------------------------
+    // MARK: - Variables
+    //-------------------------------------------------------------------------
     public static var currentContext: AppContext = AppContext()
-    
     var sessionManager : SessionManager
     
+    //-------------------------------------------------------------------------
+    // MARK: - Initializer
+    //-------------------------------------------------------------------------
     fileprivate init() {
         sessionManager = SessionManager.init()
     }

@@ -19,6 +19,8 @@
 		489B873A209C5D430055E0DC /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B8739209C5D430055E0DC /* FirstViewController.swift */; };
 		489B873C209C640B0055E0DC /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B873B209C640B0055E0DC /* SessionManager.swift */; };
 		489B873E209C67410055E0DC /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B873D209C67410055E0DC /* AppContext.swift */; };
+		48D3D3BD20A054880015565B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D3D3BC20A054880015565B /* SignUpViewController.swift */; };
+		48D3D3BF20A05BCB0015565B /* ConfirmSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D3D3BE20A05BCB0015565B /* ConfirmSignUpViewController.swift */; };
 		D1F5C507934E6BADE93E0124 /* Pods_AWS_Cognito_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531DACA4466C99BA41E5EC65 /* Pods_AWS_Cognito_Sample.framework */; };
 		EF453218D1C05C8EC317E04E /* Pods_AWS_Cognito_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 373DE03B90E65891BC18D156 /* Pods_AWS_Cognito_SampleUITests.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +65,8 @@
 		489B8739209C5D430055E0DC /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		489B873B209C640B0055E0DC /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
 		489B873D209C67410055E0DC /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
+		48D3D3BC20A054880015565B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		48D3D3BE20A05BCB0015565B /* ConfirmSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSignUpViewController.swift; sourceTree = "<group>"; };
 		531DACA4466C99BA41E5EC65 /* Pods_AWS_Cognito_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AWS_Cognito_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B080EFBC45E6B27FBB355C23 /* Pods-AWS_Cognito_SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWS_Cognito_SampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AWS_Cognito_SampleTests/Pods-AWS_Cognito_SampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3993D7B639FB08860FD5207 /* Pods-AWS_Cognito_SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWS_Cognito_SampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AWS_Cognito_SampleUITests/Pods-AWS_Cognito_SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -122,16 +126,11 @@
 		489B8708209C3E600055E0DC /* AWS_Cognito_Sample */ = {
 			isa = PBXGroup;
 			children = (
-				489B8709209C3E600055E0DC /* AppDelegate.swift */,
-				489B870B209C3E600055E0DC /* SignInViewController.swift */,
-				489B870D209C3E600055E0DC /* Main.storyboard */,
-				489B8710209C3E620055E0DC /* Assets.xcassets */,
-				489B8712209C3E620055E0DC /* LaunchScreen.storyboard */,
-				489B8715209C3E620055E0DC /* Info.plist */,
-				489B8737209C489B0055E0DC /* Constants.swift */,
-				489B8739209C5D430055E0DC /* FirstViewController.swift */,
-				489B873B209C640B0055E0DC /* SessionManager.swift */,
-				489B873D209C67410055E0DC /* AppContext.swift */,
+				48D3D3B920A054100015565B /* Controllers */,
+				48D3D3BA20A0541B0015565B /* Views */,
+				48D3D3B720A053DB0015565B /* Managers */,
+				48D3D3B820A053EE0015565B /* SupportingFiles */,
+				48D3D3BB20A054390015565B /* Utilities */,
 			);
 			path = AWS_Cognito_Sample;
 			sourceTree = "<group>";
@@ -152,6 +151,53 @@
 				489B872B209C3E620055E0DC /* Info.plist */,
 			);
 			path = AWS_Cognito_SampleUITests;
+			sourceTree = "<group>";
+		};
+		48D3D3B720A053DB0015565B /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				489B873B209C640B0055E0DC /* SessionManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		48D3D3B820A053EE0015565B /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				489B8709209C3E600055E0DC /* AppDelegate.swift */,
+				489B8710209C3E620055E0DC /* Assets.xcassets */,
+				489B8715209C3E620055E0DC /* Info.plist */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		48D3D3B920A054100015565B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				489B8739209C5D430055E0DC /* FirstViewController.swift */,
+				489B870B209C3E600055E0DC /* SignInViewController.swift */,
+				48D3D3BC20A054880015565B /* SignUpViewController.swift */,
+				48D3D3BE20A05BCB0015565B /* ConfirmSignUpViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		48D3D3BA20A0541B0015565B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				489B870D209C3E600055E0DC /* Main.storyboard */,
+				489B8712209C3E620055E0DC /* LaunchScreen.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		48D3D3BB20A054390015565B /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				489B873D209C67410055E0DC /* AppContext.swift */,
+				489B8737209C489B0055E0DC /* Constants.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		6D3C5727769D5F4A8C15B9E2 /* Pods */ = {
@@ -392,9 +438,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				489B870C209C3E600055E0DC /* SignInViewController.swift in Sources */,
+				48D3D3BD20A054880015565B /* SignUpViewController.swift in Sources */,
 				489B873E209C67410055E0DC /* AppContext.swift in Sources */,
 				489B870A209C3E600055E0DC /* AppDelegate.swift in Sources */,
 				489B8738209C489B0055E0DC /* Constants.swift in Sources */,
+				48D3D3BF20A05BCB0015565B /* ConfirmSignUpViewController.swift in Sources */,
 				489B873C209C640B0055E0DC /* SessionManager.swift in Sources */,
 				489B873A209C5D430055E0DC /* FirstViewController.swift in Sources */,
 			);
@@ -572,7 +620,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LT472GTG6;
-				INFOPLIST_FILE = AWS_Cognito_Sample/Info.plist;
+				INFOPLIST_FILE = AWS_Cognito_Sample/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -591,7 +639,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LT472GTG6;
-				INFOPLIST_FILE = AWS_Cognito_Sample/Info.plist;
+				INFOPLIST_FILE = AWS_Cognito_Sample/SupportingFiles/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
