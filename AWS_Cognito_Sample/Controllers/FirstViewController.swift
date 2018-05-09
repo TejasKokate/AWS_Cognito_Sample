@@ -7,6 +7,7 @@
 //
 
 import AWSCognitoIdentityProvider
+import Alamofire
 
 class FirstViewController: UIViewController {
 
@@ -21,6 +22,7 @@ class FirstViewController: UIViewController {
     var user: AWSCognitoIdentityUser?
     var pool: AWSCognitoIdentityUserPool?
     var response: AWSCognitoIdentityUserGetDetailsResponse?
+    var bearerToken: String = ""
     
     //-------------------------------------------------------------------------
     // MARK: - Lifecycle functions
@@ -71,22 +73,138 @@ class FirstViewController: UIViewController {
                     let refreshToken = task.result?.refreshToken?.tokenString
                     let expirationTime = task.result?.expirationTime
                     if let idToken = idToken {
-                        print("***** Id Token = \(idToken))")
+                        print("***** Id Token = \(idToken)")
+                        self.bearerToken = idToken
                     }
                     if let accessToken = accessToken {
-                        print("***** Access Token = \(accessToken))")
+                        print("***** Access Token = \(accessToken)")
                     }
                     if let refreshToken = refreshToken {
-                        print("***** Refresh Token = \(refreshToken))")
+                        print("***** Refresh Token = \(refreshToken)")
                     }
                     if let expirationTime = expirationTime {
-                        print("***** Expiration Token = \(expirationTime))")
+                        print("***** Expiration Token = \(expirationTime)")
                     }
                     return nil
                 })
                 self.tableView.reloadData()
+                
+                self.demoGetService()
+                self.demoPostService()
+                
+                
             })
             return nil
+        }
+    }
+    
+    func demoGetService() {
+        //=========================================================
+        // Demo GET Service call
+        //=========================================================
+        guard let url = URL(string: "https://8pfwlzxb07.execute-api.us-east-2.amazonaws.com/dev/observations/c1c78551-49ef-11e8-8dbd-ef23d5893e75") else {
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(self.bearerToken)",
+            "Content-Type": "application/json"
+        ]
+        
+        Alamofire.request(url, method: .get, headers: headers)
+            .validate()
+            .responseJSON { response in
+                guard response.result.isSuccess else {
+                    //Error case
+                    print("Error while fetching remote rooms: \(String(describing: response.result.error))")
+                    return
+                }
+                
+                guard let jsonResponse = response.result.value as? [String: Any] else {
+                    print("Malformed data received from service")
+                    return
+                }
+                
+                //Success case
+                print("====== GET Service Response ===========")
+                print(jsonResponse)
+        }
+    }
+    
+    func demoPostService() {
+        //=========================================================
+        // Demo POST Service call
+        //=========================================================
+        guard let url = URL(string: "https://8pfwlzxb07.execute-api.us-east-2.amazonaws.com/dev/observations/") else {
+            return
+        }
+        
+        let headers: HTTPHeaders = [
+            "Authorization": "Bearer \(self.bearerToken)",
+            "Content-Type": "application/json"
+        ]
+        
+        let parameters: [String: Any] = [
+            "resourceType": "Observation",
+            "id": "body-temperature",
+            "status": "final",
+            "category": [
+                [
+                    "coding": [
+                        [
+                            "system": "http://aws-sandbox/observation",
+                            "code": "vital-signs",
+                            "display": "Vital Signs"
+                        ]
+                    ],
+                    "text": "Vital Signs"
+                ]
+            ],
+            "code": [
+                "coding": [
+                    [
+                        "system": "http://loinc.org",
+                        "code": "8310-5",
+                        "display": "Body temperature"
+                    ]
+                ],
+                "text": "Body temperature"
+            ],
+            "subject": [
+                "reference": "Patient/example"
+            ],
+            "performer": [
+                [
+                    "reference": "Patient/example",
+                    "display": "Example Patient"
+                ]
+            ],
+            "effectiveDateTime": "1999-07-02",
+            "valueQuantity": [
+                "value": "36.5",
+                "unit": "C",
+                "system": "http://unitsofmeasure.org",
+                "code": "Cel"
+            ]
+        ]
+        
+        Alamofire.request(url, method: .post, parameters: parameters, headers: headers)
+            .validate()
+            .responseJSON { response in
+                guard response.result.isSuccess else {
+                    //Error case
+                    print("Error while fetching remote rooms: \(String(describing: response.result.error))")
+                    return
+                }
+                
+                guard let jsonResponse = response.result.value as? [String: Any] else {
+                    print("Malformed data received from service")
+                    return
+                }
+                
+                //Success case
+                print("====== POST Service Response ===========")
+                print(jsonResponse)
         }
     }
 }

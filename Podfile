@@ -7,7 +7,8 @@ target 'AWS_Cognito_Sample' do
   # Pods for AWS_Cognito_Sample
   pod 'AWSCore', '~> 2.6.0'
   pod 'AWSCognitoIdentityProvider', '~> 2.6.0'
-
+  pod 'Alamofire', '~> 4.7'
+  
   target 'AWS_Cognito_SampleTests' do
     inherit! :search_paths
     # Pods for testing
