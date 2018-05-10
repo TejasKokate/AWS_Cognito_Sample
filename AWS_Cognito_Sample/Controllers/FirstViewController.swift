@@ -102,7 +102,7 @@ class FirstViewController: UIViewController {
         //=========================================================
         // Demo GET Service call
         //=========================================================
-        guard let url = URL(string: "https://8pfwlzxb07.execute-api.us-east-2.amazonaws.com/dev/observations/c1c78551-49ef-11e8-8dbd-ef23d5893e75") else {
+        guard let url = URL(string: NetworkSettings.Environment.baseURL + testUserId) else {
             return
         }
         
@@ -116,7 +116,7 @@ class FirstViewController: UIViewController {
             .responseJSON { response in
                 guard response.result.isSuccess else {
                     //Error case
-                    print("Error while fetching remote rooms: \(String(describing: response.result.error))")
+                    print("Error while fetching response: \(String(describing: response.result.error))")
                     return
                 }
                 
@@ -135,7 +135,7 @@ class FirstViewController: UIViewController {
         //=========================================================
         // Demo POST Service call
         //=========================================================
-        guard let url = URL(string: "https://8pfwlzxb07.execute-api.us-east-2.amazonaws.com/dev/observations/") else {
+        guard let url = URL(string: NetworkSettings.Environment.baseURL) else {
             return
         }
         
@@ -144,56 +144,14 @@ class FirstViewController: UIViewController {
             "Content-Type": "application/json"
         ]
         
-        let parameters: [String: Any] = [
-            "resourceType": "Observation",
-            "id": "body-temperature",
-            "status": "final",
-            "category": [
-                [
-                    "coding": [
-                        [
-                            "system": "http://aws-sandbox/observation",
-                            "code": "vital-signs",
-                            "display": "Vital Signs"
-                        ]
-                    ],
-                    "text": "Vital Signs"
-                ]
-            ],
-            "code": [
-                "coding": [
-                    [
-                        "system": "http://loinc.org",
-                        "code": "8310-5",
-                        "display": "Body temperature"
-                    ]
-                ],
-                "text": "Body temperature"
-            ],
-            "subject": [
-                "reference": "Patient/example"
-            ],
-            "performer": [
-                [
-                    "reference": "Patient/example",
-                    "display": "Example Patient"
-                ]
-            ],
-            "effectiveDateTime": "1999-07-02",
-            "valueQuantity": [
-                "value": "36.5",
-                "unit": "C",
-                "system": "http://unitsofmeasure.org",
-                "code": "Cel"
-            ]
-        ]
+       
         
-        Alamofire.request(url, method: .post, parameters: parameters, headers: headers)
+        Alamofire.request(url, method: .post, parameters: NetworkSettings.parameters, encoding: JSONEncoding.default, headers: headers)
             .validate()
             .responseJSON { response in
                 guard response.result.isSuccess else {
                     //Error case
-                    print("Error while fetching remote rooms: \(String(describing: response.result.error))")
+                    print("Error encountered: \(String(describing: response.result.error))")
                     return
                 }
                 

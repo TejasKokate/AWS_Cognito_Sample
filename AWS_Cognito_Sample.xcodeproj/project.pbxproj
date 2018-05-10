@@ -21,6 +21,7 @@
 		489B873E209C67410055E0DC /* AppContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 489B873D209C67410055E0DC /* AppContext.swift */; };
 		48D3D3BD20A054880015565B /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D3D3BC20A054880015565B /* SignUpViewController.swift */; };
 		48D3D3BF20A05BCB0015565B /* ConfirmSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D3D3BE20A05BCB0015565B /* ConfirmSignUpViewController.swift */; };
+		48D3D42C20A324190015565B /* NetworkSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48D3D42B20A324190015565B /* NetworkSettings.swift */; };
 		D1F5C507934E6BADE93E0124 /* Pods_AWS_Cognito_Sample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 531DACA4466C99BA41E5EC65 /* Pods_AWS_Cognito_Sample.framework */; };
 		EF453218D1C05C8EC317E04E /* Pods_AWS_Cognito_SampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 373DE03B90E65891BC18D156 /* Pods_AWS_Cognito_SampleUITests.framework */; };
 /* End PBXBuildFile section */
@@ -67,6 +68,7 @@
 		489B873D209C67410055E0DC /* AppContext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppContext.swift; sourceTree = "<group>"; };
 		48D3D3BC20A054880015565B /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		48D3D3BE20A05BCB0015565B /* ConfirmSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmSignUpViewController.swift; sourceTree = "<group>"; };
+		48D3D42B20A324190015565B /* NetworkSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSettings.swift; sourceTree = "<group>"; };
 		531DACA4466C99BA41E5EC65 /* Pods_AWS_Cognito_Sample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AWS_Cognito_Sample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B080EFBC45E6B27FBB355C23 /* Pods-AWS_Cognito_SampleTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWS_Cognito_SampleTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AWS_Cognito_SampleTests/Pods-AWS_Cognito_SampleTests.release.xcconfig"; sourceTree = "<group>"; };
 		E3993D7B639FB08860FD5207 /* Pods-AWS_Cognito_SampleUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AWS_Cognito_SampleUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-AWS_Cognito_SampleUITests/Pods-AWS_Cognito_SampleUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +198,7 @@
 			children = (
 				489B873D209C67410055E0DC /* AppContext.swift */,
 				489B8737209C489B0055E0DC /* Constants.swift */,
+				48D3D42B20A324190015565B /* NetworkSettings.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -447,6 +450,7 @@
 				48D3D3BF20A05BCB0015565B /* ConfirmSignUpViewController.swift in Sources */,
 				489B873C209C640B0055E0DC /* SessionManager.swift in Sources */,
 				489B873A209C5D430055E0DC /* FirstViewController.swift in Sources */,
+				48D3D42C20A324190015565B /* NetworkSettings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -623,7 +627,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LT472GTG6;
 				INFOPLIST_FILE = AWS_Cognito_Sample/SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deloitte.AWS-Cognito-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -639,7 +646,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LT472GTG6;
 				INFOPLIST_FILE = AWS_Cognito_Sample/SupportingFiles/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deloitte.AWS-Cognito-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -656,7 +666,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LT472GTG6;
 				INFOPLIST_FILE = AWS_Cognito_SampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deloitte.AWS-Cognito-SampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -674,7 +688,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LT472GTG6;
 				INFOPLIST_FILE = AWS_Cognito_SampleTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deloitte.AWS-Cognito-SampleTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -691,7 +709,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LT472GTG6;
 				INFOPLIST_FILE = AWS_Cognito_SampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deloitte.AWS-Cognito-SampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -708,7 +730,11 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 3LT472GTG6;
 				INFOPLIST_FILE = AWS_Cognito_SampleUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.deloitte.AWS-Cognito-SampleUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
